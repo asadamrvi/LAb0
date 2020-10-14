@@ -2,43 +2,71 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
-  <style>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="../js/ValidateFieldsQuestion.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/ourcss.css"/>
 
-.questionBox {
-  background-color: rgb(211,211,211);
-  //width: 300px;
-  border: 15px groove;
-  padding: 50px;
-  margin: 20px;
-}
-
-  </style>
+  
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
+  
   <section class="main" id="s1">
-    <div class="questionBox">
-      <form id='questionForm' name='fquestion' action='AddQuestion.php'>
-  <label>Email*:</label>
-    <input type="text" id="fEmail" name="fEmail"> <br>
-  <label>Enunciado de la pregunta*:</label>
-    <input type="text" id="fQuestion" name="fQuestion"> <br>
-  <label>Respuesta Correcta*:</label>
-    <input type="text" id="fCorrecta" name="fCorrecta"> <br>
-  <label>Respuesta Incorrecta*:</label>
-    <input type="text" id="fIncorrecta1" name="fIncorrecta1"> <br>
-  <label>Respuesta Incorrecta*:</label>
-    <input type="text" id="fIncorrecta2" name="fIncorrecta2"><br>
-  <label>Respuesta Incorrecta*:</label>
-    <input type="text" id="fIncorrecta3" name="fIncorrecta3"><br>
-  <label>Complejidad:</label>
-     <select id="complejidad">
-        <option value="baja">Baja</option>
-        <option value="mediana">Media</option>
-        <option value="alta">Alta</option>
-     </select> <br><br>
-
-  <input type="submit" value="Enviar Solicitud" id="submit">
+    <div class="questionBox" style="align:center">
+      <form id='questionForm' name='fquestion' action="AddQuestion.php">
+	  <table class="tt">
+  <tr><td><label>Email*:</label></td>
+    <td><input type="text" id="fEmail" name="fEmail"></td> <td><span id="emailerror"></span> </td></tr>
+  <tr>
+  <td><label>Enunciado de la pregunta*:</label></td>
+    <td><input type="text" id="fQuestion" name="fQuestion"> </td>
+	<td><span id="preguntacheck"></span> <br></td>
+	</tr>
+	
+	<tr>
+ <td> <label>Respuesta Correcta*:</label></td>
+  <td>  <input type="text" id="fCorrecta" name="fCorrecta"> </td>
+  <td><span id="respuestacheck"></span> <br></td>
+	
+	</tr>
+	
+	
+	
+	<tr>
+ <td> <label>Respuesta Incorrecta*:</label></td>
+ <td>   <input type="text" id="fIncorrecta1" name="fIncorrecta1"> </td>
+ <td><span id="incorrectcheck1"></span> </td>
+	</tr>
+	
+	<tr>
+ <td> <label>Respuesta Incorrecta*:</label></td>
+   <td> <input type="text" id="fIncorrecta2" name="fIncorrecta2"></td>
+   <td><span id="incorrectcheck2"></span> </td>
+	</tr>
+	
+	<tr>
+ <td> <label>Respuesta Incorrecta*:</label></td>
+  <td>  <input type="text" id="fIncorrecta3" name="fIncorrecta3"> </td>
+     <td><span id="incorrectcheck3"></span> </td>
+</tr>
+	
+<tr>	
+ <td> <label>Complejidad:</label></td>
+    <td> <select id="complejidad">
+        <option value="1">1-Baja</option>
+        <option value="2">2-Media</option>
+        <option value="3">3-Alta</option>
+     </select></td>
+<td><span id="complexcheckerror"></span> </td>	 
+</tr>
+  <tr>
+  <td> <label>Insertar Pregunta:</label></td>
+  <td><input type="submit" value="Enviar Solicitud" id="submit"></td> 
+  <td><span id="submiterror"></span></td>
+  
+  </tr>
+  
+  </table>
 </form>
 
     </div>

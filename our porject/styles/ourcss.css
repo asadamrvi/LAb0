@@ -1,0 +1,9 @@
+.questionBox{
+  background-color: rgb(211,211,211);
+  
+  border: 15px groove;
+  padding: 50px;
+  
+  width:800px; 
+  margin:0 auto;
+}

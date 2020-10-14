@@ -9,9 +9,9 @@
     <div>
 
       <h2>Quiz: el juego de las preguntas</h2>
-	  
-      <a href="../php/QuestionForm.php"><h3> QuestionForm
-	               </h3></a>
+	 
+	  <a href="../php/QuestionForm.php"> <h3>Insertar Pregunta</h3> </a>
+      
     </div>
   </section>
   <?php include '../html/Footer.html' ?>

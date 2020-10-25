@@ -2,15 +2,55 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
+  <style media="screen">
+table,thead,tbody,td,th {
+  border: 2px solid black;
+}
+  </style>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
-      Código PHP para mostrar una tabla con las preguntas de la BD.<br>
-      La tabla no incluye las imágenes
+      <h2> Preguntas</h2>
+      <?php
+      require_once('DbConfig.php');
+      
+      $connection=mysqli_connect($server, $user, $pass, $basededatos) or die("Connection Failed");
+      $query="SELECT * FROM preguntas";
+      $result=mysqli_query($connection,$query) or die("Query Failed");
+
+      if(mysqli_num_rows($result)>0){
+
+
+       ?>
+      <table id="table">
+        <thead id="thead">
+
+          <th>Email</th>
+          <th>Question</th>
+          <th>Correct Answer</th>
+
+        </thead>
+        <tbody id="tbody">
+          <?php while ($row=mysqli_fetch_assoc($result)) {
+
+
+           ?>
+          <tr>
+          <td><?php echo $row['Email'];  ?></td>
+          <td><?php echo $row['Question'];  ?></td>
+          <td><?php echo $row['Answer'];  ?></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+
+      </table>
+    <?php }?>
+
     </div>
   </section>
+
   <?php include '../html/Footer.html' ?>
 </body>
 </html>

@@ -14,9 +14,7 @@ table,thead,tbody,td,th {
     <div>
       <h2> Preguntas</h2>
       <?php
-      require_once('DbConfig.php');
-      
-      $connection=mysqli_connect($server, $user, $pass, $basededatos) or die("Connection Failed");
+      $connection=mysqli_connect("localhost","root","","quiz") or die("Connection Failed");
       $query="SELECT * FROM preguntas";
       $result=mysqli_query($connection,$query) or die("Query Failed");
 

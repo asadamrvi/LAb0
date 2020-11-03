@@ -3,8 +3,7 @@
 <head>
   <?php include '../html/Head.html'?>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="../js/ValidateFieldsQuestion.js"></script>
-  <script src="../js/ShowImageInForm.js"></script>
+
     <link rel="stylesheet" type="text/css" href="../styles/ourcss.css"/>
 
 
@@ -14,10 +13,10 @@
 
   <section class="main" id="s1">
     <div class="questionBox" style="align:center">
-      <form id='questionForm' name='fquestion' action="AddQuestion.php" method="post">
+      <form id='questionForm' name='fquestion' action="AddQuestion.php" method="get">
 	  <table class="tt">
   <tr><td><label>Email*:</label></td>
-    <td><input type="text" id="fEmail" name="fEmail"></td> <td><span id="emailerror"></span> </td></tr>
+    <td><input type="text" id="email" name="email"></td> <td><span id="emailerror"></span> </td></tr>
   <tr>
   <td><label>Enunciado de la pregunta*:</label></td>
     <td><input type="text" id="fQuestion" name="fQuestion"> </td>
@@ -67,8 +66,6 @@
      </select></td>
 <td><span id="complexcheckerror"></span> </td>
 </tr>
-
-
   <tr>
   <td> <label>Insertar Pregunta:</label></td>
   <td><input type="submit" value="Enviar Solicitud" id="submit"></td>

@@ -74,7 +74,10 @@
 
       }
     else {
-      echo ("Par&aacute;metros de login incorrectos ");
+
+      echo("<script>alert('Parametros incorrectos')</script>");
+
+
 
       }
 

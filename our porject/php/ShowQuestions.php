@@ -19,7 +19,9 @@ table,thead,tbody,td,th {
       $connection= mysqli_connect($server, $user, $pass, $basededatos);
          if (mysqli_connect_errno()) {
           echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }      $query="SELECT * FROM preguntas";
+        }
+        $email=$_GET['email'];
+        $query="SELECT * FROM `preguntas` WHERE Email='$email'";
       $result=mysqli_query($connection,$query) or die("Query Failed");
 
       if(mysqli_num_rows($result)>0){

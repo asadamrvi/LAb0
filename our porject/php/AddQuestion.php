@@ -53,10 +53,17 @@
          $connection=mysqli_connect($server, $user, $pass, $basededatos) or die("Connection Failed");
         $query="INSERT INTO `preguntas` (`Email`, `Question`, `Answer`, `IncorrectAnswer1`, `IncorrectAnswer2`, `IncorrectAnswer3`, `Complexity`, `Tema`) VALUES
         ('{$email}', '{$question}', '{$correct}', '{$wrong1}', '{$wrong2}', '{$wrong3}', '{$complexity}', '{$tema}')";
-        $result=mysqli_query($connection,$query) or die("Query Failed");
+        //$result=mysqli_query($connection,$query) or die("Query Failed");
+        if ($connection->query($query) === TRUE) {
 
+          echo("Pregunta Insertada correctamente:<a href=../php/ShowQuestions.php?email=$email&cont=1> <h3>Ver Preguntas</h3> </a>");
+
+         } else {
+           echo mysql_errno($query) . ": " . mysql_error($query). "\n";
+           echo "Error, algo salio mal al insertar los datos en la BD. <br>";
+
+         }
         mysqli_close($connection);
-        echo("Pregunta Insertada correctamente:<a href=../php/ShowQuestions.php?email=$email&cont=1> <h3>Ver Preguntas</h3> </a>");
 
 
 

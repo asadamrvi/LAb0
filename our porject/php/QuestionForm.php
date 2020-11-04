@@ -15,8 +15,23 @@
     <div class="questionBox" style="align:center">
       <form id='questionForm' name='fquestion' action="AddQuestion.php" method="get">
 	  <table class="tt">
-  <tr><td><label>Email*:</label></td>
-    <td><input type="text" id="email" name="email"></td> <td><span id="emailerror"></span> </td></tr>
+  <tr>
+    <td><label>Email*:</label></td>
+    <td>
+
+
+      <?php
+      if (isset($_GET['cont'])==1) {
+        $email=$_GET['email'];
+        echo "<input type='text' id='email' name='email' value='$email' readonly>";
+
+      }
+      else {
+        echo "<input type='text' id='email' name='email'>";
+      }
+
+       ?></td>
+       <td><span id="emailerror"></span> </td></tr>
   <tr>
   <td><label>Enunciado de la pregunta*:</label></td>
     <td><input type="text" id="fQuestion" name="fQuestion"> </td>

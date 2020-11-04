@@ -1,186 +1,133 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <?php include '../html/Head.html'?>
-      <link rel="stylesheet" type="text/css" href="../styles/ourcss.css"/>
-   </head>
-   <body>
-      <?php include '../php/Menus.php' ?>
 
-            <?php
-               $errMail=$errName=$errPass=$errRePass="";
-               $email=$nombre=$password=$passwordRepetido=FALSE;
+<head>
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../js/ShowImageInForm.js"></script>
+  <script type="text/javascript" src="../js/VerifyPassEmail.js"></script>
 
-               if($_SERVER["REQUEST_METHOD"] =="POST") {
+  <?php include '../html/Head.html' ?>
+</head>
 
-                  $tipoUsuario = ($_POST["fTipoUsuario"]);
+<body>
+  <?php include '../php/Menus.php' ?>
 
-                  if(empty($_POST["fEmail"])) {
-                     $errMail ="Email cannot be empty!";
-                  }
-                  if ($_POST["fTipoUsuario"]=="alumno") {
+  <section class="main" id="s1">
+    <div>
+      <h3>Introduce tus datos</h3>
+      <p><span class="error">* Campo obligatorio</span></p>
+      <br>
+      <form id="registro"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+        ¿Eres alumno o profesor ? :
+        <select name="tipo" id="nivel">
 
-                     if(!filter_var($_POST["fEmail"], FILTER_VALIDATE_REGEXP,array("options" => array("regexp"=>"/^(\s)*[a-z]+[0-9]{3}(\@ikasle.ehu.){1}(eus|es){1}(\s)*$/i")))) {
-                        $errMail = "Email is not valid";
-                     }
+          <option value="1">Alumno</option>
+          <br>
+          <option value="2">Profesor</option>
+        </select><br><br>
+        Email*: <br><input id="email" name="email" size="75" type="text"><div id="mail"></div>
+        <br>
+        Nombre y Apellidos*: <br><input id="nombre" name="nombre" size="75" type="text">
+        <br><br>
+        Contraseña*: <br><input id="password" name="password" size="75" type="password"><div id="pass"></div>
+        <br>
+        Repetir contraseña*: <br><input id="passwordr" name="passwordr" size="75" type="password">
+        <br>
+         <input type="submit" name="submit"id="Boton" value="Registrarse">
 
-                     else {
-                        $correo = validData($_POST["fEmail"]);
-                        $email=TRUE;
-                     }
-                  }
-                  else {
-                     if(!filter_var($_POST["fEmail"], FILTER_VALIDATE_REGEXP,array("options" => array("regexp"=>"/^(\s)*[a-z]+(\.{1}[a-z]*)?\@ehu.{1}(eus|es){1}(\s)*$/i")))) {
-                        $errMail = "Email is not valid";
-                     }
-
-                     else {
-                        $correo = validData($_POST["fEmail"]);
-                        $email=TRUE;
-                     }
-                  }
-
-                  if(empty($_POST["fNombreApellido"])) {
-                     $errName ="The name cannot be empty!";
-                  }
-
-                  elseif(!filter_var($_POST["fNombreApellido"], FILTER_VALIDATE_REGEXP,array("options" => array("regexp"=>"/([a-zA-Z]+\s?\b){2,}/")))) {
-
-                     $errName = "The name should be at least two words";
-                  }
-
-                  else {
-                     $name = validData($_POST["fNombreApellido"]);
-                     $nombre=TRUE;
-                  }
+      </form>
 
 
-                  if (empty($_POST["fPassword"])) {
-                     $errPass ="The password cannot be empty";
-                  }
+    </div>
+  </section>
+  <?php include '../html/Footer.html' ?>
+  <?php
+  if (isset($_POST['submit'])) { //check if form was submitted
 
-                  elseif(strlen($_POST["fPassword"])<6) {
+    function alert($mensaje)
+    {
+      echo "<script type='text/javascript'>alert('$mensaje');  window.history.go(-1);</script>";
+    }
 
-                     $errPass = "The password must have at least 6 characters";
-                  }
+    function alertredirect($mensaje){
+      echo "<script type='text/javascript'>alert('$mensaje'); window.location.href = 'LogIn.php'; </script>";
+    }
 
-                  else {
-                     $pass = validData($_POST["fPassword"]);
-                     $password=TRUE;
-                  }
+    function ValidateRegisterPHP($email, $password, $passwordr, $nombre, $tipo)
+    {
 
+      if (preg_match("/(((^[a-zA-Z]+)([0-9]{3})@ikasle\.ehu\.(eus|es))|((^[a-zA-Z]+)\.?([a-zA-Z]*)@ehu\.(eus|es)))$/", $email) == 0) {
+        alert("Error, el servidor dice que el email no es correcto.");
+        return false;
+      }
 
-                  if ((empty($_POST["fRepeatPassword"])) or (($_POST["fRepeatPassword"])!= ($_POST["fPassword"]))) {
+      if (($tipo == 1 && preg_match("/((^[a-zA-Z]+)\.?([a-zA-Z]*)@ehu\.(eus|es))$/", $email) == 1)
+        ||($tipo == 2 && preg_match("/((^[a-zA-Z]+)([0-9]{3})@ikasle\.ehu\.(eus|es))$/", $email) == 1)) {
+        alert("Error, el servidor dice que el email no concuerda con el tipo de usuario.");
+        return false;
+      }
 
-                     $errRePass ="The password does not match!";
-                  }
-                  else {
+      if (preg_match("/.{6,}$/", $password) == 0) {
+        alert("Error, el servidor dice que las contraseñas son cortas (min. 6 caracteres).");
+        return false;
+      }
 
-                     $repeatPass = validData($_POST["fRepeatPassword"]);
-                     $passwordRepetido=TRUE;
-                  }
+      if ($password != $passwordr) {
+        alert("Error, el servidor dice que las contraseñas no coinciden.");
+        return false;
+      }
 
-                  if($email and $nombre and $password and $passwordRepetido) {
-                    require_once('DbConfig.php');
+      if (preg_match("/^[A-Za-z]+(\s[A-Za-z]+){1,}$/", $nombre) == 0) {
+        alert("Error, el servidor dice que tiene que haber al menos 2 palabras.");
+        return false;
+      }
 
+      if ($tipo != (1 || 2)) {
+        alert("Error, el servidor dice que hay un fallo en el tipo de usuario.");
+        return false;
+      }
 
-                     $connection=mysqli_connect("$server","$user","$pass","$basededatos_registro");
+      return true;
+    }
 
-                     if (!$connection) {
+    require_once('DbConfig.php');
 
-                        echo ' Database Error Occured ';
-                     }
+    $conexion = mysqli_connect($server, $user, $pass, $basededatos);
+    if (mysqli_connect_errno()) {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
 
-                     $selectQuery="SELECT * FROM `usuario` WHERE `email`= '$correo' ";
+    $email = $_POST['email'];
+    $nombre = $_POST['nombre'];
+    $password = $_POST['password'];
+    $passwordr = $_POST['passwordr'];
+    $tipo = $_POST['tipo'];
 
-                     $selectResult=mysqli_query($connection,$selectQuery);
+    if (ValidateRegisterPHP($email, $password, $passwordr, $nombre, $tipo)) {
+      // echo "$email";
+      // echo "$nombre";
+      // echo "$password";
+      // echo "$passwordr";
+      // echo "$tipo";
 
-                     if(!$selectResult) {
-                        echo 'Select Query Failed';
-                     }
+      $password = md5($password);
+     // alert($password);
+     // echo " '$password'";
+        $sql = "INSERT INTO usuario (tipousuario, email , nombre, password)
+        VALUES( '$tipo','$email', '$nombre','$password')";
 
-                     if (mysqli_num_rows($selectResult) == 0) {
+        if ($conexion->query($sql) === TRUE) {
+          alertredirect("Registro completado exitosamente.");
+        } else {
+          alert("Error, algo salio mal al insertar los datos en la BD.");
+        }
+    } else {
+      alert("Error, no cumples los parametros para registrarte.");
+    }
 
-                        $InsertQuery="INSERT INTO `usuario` (`tipousuario`, `email`, `nombre`, `password`, `repassword`) VALUES ('{$tipoUsuario}', '{$correo}', '{$name}', '{$pass}', '{$repeatPass}')";
+    $conexion->close();
+  }
+  ?>
+</body>
 
-                        $InsertResult=mysqli_query($connection,$InsertQuery);
-
-                        if (!$InsertResult) {
-                           echo 'Insert Query Failed ';
-                        }
-
-                        if (mysqli_affected_rows($connection) == 1) {
-
-                           echo("<script>
-                           alert ('You have successfuly registered:". $correo ."')
-                           window.location.href='LogIn.php';
-                           </script>");
-
-                        }
-                     }
-
-                     else {
-
-                        echo("<script> alert ('This email is already associated with an account:". $correo . "')</script>");
-
-                     }
-
-                     mysqli_close($connection);
-                  }
-
-
-
-                 }
-
-                 function validData($data) {
-                  $data = trim($data);
-                  //$data = stripcslashes($data);
-                  $data = htmlspecialchars($data);
-                  return $data;
-                 }
-
-               ?>
-
-      <section class="main" id="s1">
-         <div class="signUpBox" style="align:center">
-            <form id='signUpForm' name='signUpForm' action="" method="post">
-               <table class="tt">
-                  <tr>
-                     <td><label>Tipo Usuario*:</label>
-                        <input type="radio" id="alumno" name="fTipoUsuario" value="alumno" checked="checked">
-                        <label>Alumno</label>
-                        <input type="radio" id="profesor" name="fTipoUsuario" value="profesor">
-                        <label>Profesor</label>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td><label>Email*:</label></td>
-                     <td><input type="text" id="fEmail" name="fEmail"></td>
-                     <td><?php echo $errMail;?></td>
-                  </tr>
-                  <tr>
-                     <td><label>Nombre y Apellidos*:</label></td>
-                     <td><input type="text" id="fNombreApellido" name="fNombreApellido"> </td>
-                     <td><?php echo $errName;?></td>
-                  </tr>
-                  <tr>
-                     <td><label>Password*:</label></td>
-                     <td><input type="password" id="fPassword" name="fPassword"> </td>
-                     <td><?php echo $errPass;?></td>
-                  </tr>
-                  <tr>
-                     <td><label>Repeat Password*:</label></td>
-                     <td><input type="password" id="fRepeatPassword" name="fRepeatPassword"> </td>
-                     <td><?php echo $errRePass;?></td>
-                  </tr>
-                  <tr>
-                     <td> <label>Enviar Solicitud:</label></td>
-                     <td><input type="submit" value="Enviar Solicitud" id="submit"></td>
-                  </tr>
-               </table>
-            </form>
-         </div>
-      </section>
-      <?php include '../html/Footer.html' ?>
-   </body>
 </html>

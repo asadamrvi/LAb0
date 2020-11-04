@@ -14,8 +14,12 @@ table,thead,tbody,td,th {
     <div>
       <h2> Preguntas</h2>
       <?php
-      $connection=mysqli_connect("localhost","root","","quiz") or die("Connection Failed");
-      $query="SELECT * FROM preguntas";
+      require_once('DbConfig.php');
+
+      $connection= mysqli_connect($server, $user, $pass, $basededatos);
+         if (mysqli_connect_errno()) {
+          echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }      $query="SELECT * FROM preguntas";
       $result=mysqli_query($connection,$query) or die("Query Failed");
 
       if(mysqli_num_rows($result)>0){

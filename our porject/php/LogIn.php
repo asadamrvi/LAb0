@@ -47,10 +47,14 @@
 <?php
 
   if (isset($_POST['email'])){
+    require_once('DbConfig.php');
 
-    $mysql= mysqli_connect("localhost","root","","registro") or die(mysqli_connect_error());
+    $mysql= mysqli_connect($server, $user, $pass, $basededatos);
+       if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
     $username=$_POST['email'];
-    $pass=$_POST['pass'];
+    $pass=md5($_POST['pass']);
     $usuarios = mysqli_query( $mysql,"SELECT * FROM `usuario` WHERE `email`= '$username'  and password ='$pass'");
 
     $cont= mysqli_num_rows($usuarios);

@@ -47,7 +47,7 @@ tr:nth-child(even) {
     <td>Hayat</td>
     <td>IS</td>
     <td>ahayat001@ikasle.ehu.eus</td>
-    <td><img src="../images/Asad.png" style="width:125px"></td>
+    <td><img src="../images/img5.jpg" style="width:125px"></td>
   </tr>
 </table>
 

@@ -5,14 +5,12 @@ if ($local==1){
     $user="root";
     $pass="";
     $basededatos="quiz";
-    $basededatos_registro="registro";
 
 }
 else{
-    $server="localhost";
-    $user="";
-    $pass="";
-    $basededatos="";
-    $basededatos_registro="registro";
+  $server="localhost";
+  $user="id14911842_asadhayath";
+  $pass="Hhayathayat6@";
+  $basededatos="id14911842_quiz";
 }
 ?>

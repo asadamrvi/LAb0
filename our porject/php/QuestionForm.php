@@ -13,7 +13,7 @@
 
   <section class="main" id="s1">
     <div class="questionBox" style="align:center">
-      <form id='questionForm' name='fquestion' action="AddQuestion.php" method="get">
+
 	  <table class="tt">
   <tr>
     <td><label>Email*:</label></td>
@@ -23,10 +23,12 @@
       <?php
       if (isset($_GET['cont'])==1) {
         $email=$_GET['email'];
+        echo "<form id='questionForm' name='fquestion' action='AddQuestion.php?email=$email' method='get'>";
         echo "<input type='text' id='email' name='email' value='$email' readonly>";
 
       }
       else {
+        echo "<form id='questionForm' name='fquestion' action='AddQuestion.php' method='get'>";
         echo "<input type='text' id='email' name='email'>";
       }
 

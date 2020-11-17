@@ -25,9 +25,13 @@ if (isset($_GET['cont'])==1) {
 
   echo "<span><a href='Layout.php?email=$email&cont=1'>Inicio</a></span>";
 
-  echo "<span><a href='QuestionForm.php?email=$email&cont=1'> Insertar Pregunta</a></span>";
-  echo "<span><a href='ShowQuestions.php?email=$email&cont=1'> Ver Preguntas</a></span>";
+  //echo "<span><a href='QuestionForm.php?email=$email&cont=1'> Insertar Pregunta</a></span>";
+//  echo "<span><a href='ShowQuestions.php?email=$email&cont=1'> Ver Preguntas</a></span>";
+//  echo "<span><a href='ShowXMLQuestions.php?email=$email&cont=1'> Ver Preguntas XML</a></span>";
   echo "<span><a href='Credits.php?email=$email&cont=1'>Creditos</a></span>";
+  echo "<span><a href='HandlingQuizesAjax.php?email=$email&cont=1'> Ver Preguntas AJax</a></span>";
+
+
 
 
 

@@ -21,7 +21,8 @@ table,thead,tbody,td,th {
           echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
         $email=$_GET['email'];
-        $query="SELECT * FROM `preguntas` WHERE Email='$email'";
+        $query="SELECT * FROM `preguntas`";
+        // WHERE Email='$email'"
       $result=mysqli_query($connection,$query) or die("Query Failed");
 
       if(mysqli_num_rows($result)>0){

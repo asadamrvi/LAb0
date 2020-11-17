@@ -1,9 +1,17 @@
 .questionBox{
   background-color: rgb(211,211,211);
-  
+
   border: 15px groove;
   padding: 50px;
-  
-  width:800px; 
+
+  width:800px;
   margin:0 auto;
+}
+
+.table1,.row,.col {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+.table1,.row,.col {
+  padding: 5px;
 }

@@ -4,6 +4,12 @@
   <?php include '../html/Head.html'?>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+  <script type="text/javascript" src="../js/ShowQuestionsAjax.js"></script>
+  <script type="text/javascript" src="../js/AddQuestionsAjax.js"></script>
+  <script type="text/javascript" src="../js/CountQuestionsAjax.js"></script>
+  <script type="text/javascript" src="../js/showUsers.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="../styles/ourcss.css"/>
 
 
@@ -13,6 +19,14 @@
 
   <section class="main" id="s1">
     <div class="questionBox" style="align:center">
+      <div style="text-align:center; border-color:black; border-style:dotted; width:40%; margin:auto;">
+        <p> Mis preguntas / Preguntas totales </p>
+        <div id='preg'> </div>
+        <br>
+
+        <p>Usuarios conectados</p>
+        <div id='contador'></div>
+      </div>
 
 	  <table class="tt">
   <tr>
@@ -26,7 +40,7 @@
         $email=$_GET['email'];
 
         echo "<form id='questionForm' name='fquestion' action='AddQuestion.php?email=$email' method='get'>";
-        
+
         echo "<input type='text' id='email' name='email' value='$email' readonly>";
 
       }
@@ -88,16 +102,26 @@
 </tr>
   <tr>
   <td> <label>Insertar Pregunta:</label></td>
-  <td><input type="submit" value="Enviar Solicitud" id="submit"></td>
+  <td><input type="button" value="Ver Preguntas" id="verpreg" onclick="loadDoc()">
+    <input type="button" value="Insertar Pregunta" id="insertpreg"  >
+    <input type="Reset" value="Reset" id="resett" onclick="rese()"  >
+  </td>
+
   <td><span id="submiterror"></span></td>
 
   </tr>
 
   </table>
+
 </form>
+<div style="text-align: center; margin:auto;" id="enviar"></div>
 
     </div>
+    <div id="err" ></div>
+
+
   </section>
+
   <?php include '../html/Footer.html' ?>
 </body>
 </html>

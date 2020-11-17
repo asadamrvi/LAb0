@@ -63,11 +63,12 @@
 
     if($cont==1){
 
+      echo "$username";
 
+      echo("<script>window.location = 'IncreaseGlobalCounter.php?email=$username&cont=1';</script>");
 
-
-     echo("<script> alert ('Bienvenido al sistema:". $username ."')
-     window.location.href='Layout.php?email=$username&cont=1';</script>");
+     //echo("<script> alert ('Bienvenido al sistema:". $username ."')
+     //window.location.href='Layout.php?email=$username&cont=1';</script>");
 
 
 

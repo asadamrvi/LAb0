@@ -19,6 +19,8 @@ tr:nth-child(even) {
 }
 </style>
   <?php include '../html/Head.html'?>
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/google.js"></script>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
@@ -50,6 +52,12 @@ tr:nth-child(even) {
     <td><img src="../images/img5.jpg" style="width:125px"></td>
   </tr>
 </table>
+<br>
+      <div id="buttono-"><button id="button" onClick="locate()">My Current Location</button></div>
+      <br>
+      <div style="text-align: center; margin:auto; height:400px; width:600px" id="map-"></div>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcxfCxt16ts5kz5UA2x0U6Y84qjQh-bqc&callback=initMap" async defer></script>
 
     </div>
   </section>

@@ -1,6 +1,5 @@
 <?php
 require_once('../lib/nusoap.php');
-require_once('../lib/class.wsdlcache.php');
 
 
 $ns="http://localhost";
@@ -8,12 +7,14 @@ $ns="http://localhost";
 $server = new soap_server;
 $server->configureWSDL('GetQuestion',$ns);
 $server->wsdl->schemaTargetNamespace=$ns;
-$server->register('GetQuestion',array('x'=>'xsd:string'),array('z'=>'xsd:string','a'=>'xsd:string','u'=>'xsd:string'),$ns);
+//The function we are going to use
+$server->register('GetQuestion',array('x'=>'xsd:string'),array('a'=>'xsd:string','b'=>'xsd:string','c'=>'xsd:string'),$ns);
+//implementamos la función
 function GetQuestion ($x){
     require_once('DbConfig.php');
 
     $conexion = mysqli_connect($server, $user, $pass, $basededatos);
-    $sql = "SELECT Email,Question,Answer FROM preguntas where Numberr ='$x' ";
+    $sql = "SELECT Email,Question,Answer FROM preguntas where Number ='$x' ";
     $result = $conexion->query($sql);
     $row = mysqli_fetch_array($result);
 		if($row["Email"]!=""){

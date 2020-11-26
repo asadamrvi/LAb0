@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="ShowXmlQuestions.xsl"?>
 <assessmentItems>
-	<assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
-		<itemBody>
-			<p>Tag HTML para aniadir un formulario</p>
-		</itemBody>
-		<correctResponse>
-			<response>
-				FORM
-			</response>
-		</correctResponse>
-		<IncorrectResponses>
-			<response> OBJECT </response>
-			<response> TABLE </response>
-			<response> DIV </response>
-		</IncorrectResponses>
-	</assessmentItem>
-		<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
-		<itemBody>
-			<p>Este protocolo acabara; funcionando
-			incluso entre dos latas unidas por un cordon</p>
-		</itemBody>
-		<correctResponse>
-			<response>
-				TCP/IP
-			</response>
-		</correctResponse>
-		<IncorrectResponses>
-			<response> HTTP </response>
-			<response> SMTP </response>
-			<response> Ninguna es correcta </response>
-		</IncorrectResponses>
-	</assessmentItem>
-<assessmentItem subject="s" author="vadillo@ehu.es"><itemBody><p>aaaaaaaaaaaa</p></itemBody><correctResponse><response>s</response></correctResponse><icorrectResponses><response>s</response><response>s</response><response>s</response></icorrectResponses></assessmentItem><assessmentItem subject="a" author="vadilloo@ehu.es"><itemBody><p>aaaaaaaaaaaaaaaaaa</p></itemBody><correctResponse><response>a</response></correctResponse><icorrectResponses><response>a</response><response>aa</response><response>a</response></icorrectResponses></assessmentItem></assessmentItems>
+
+<assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>How many days do we have in a week?</p></itemBody><correctResponse><response>7</response></correctResponse><icorrectResponses><response>1</response><response>2</response><response>6</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>How many days are there in a normal year?</p></itemBody><correctResponse><response>365</response></correctResponse><icorrectResponses><response>550</response><response>123</response><response>550</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>How many colors are there in a rainbow?</p></itemBody><correctResponse><response>7</response></correctResponse><icorrectResponses><response>2</response><response>5</response><response>6</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>Which animal is known as the ‘Ship of the Desert?’</p></itemBody><correctResponse><response>Camel</response></correctResponse><icorrectResponses><response>Lion</response><response>tiger</response><response>Monkey</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>How many letters are there in the English alphabet?</p></itemBody><correctResponse><response>26</response></correctResponse><icorrectResponses><response>20</response><response>21</response><response>25</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>How many consonants are there in the English alphabet?</p></itemBody><correctResponse><response>21</response></correctResponse><icorrectResponses><response>20</response><response>25</response><response>22</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>How many sides are there in a triangle?</p></itemBody><correctResponse><response>3</response></correctResponse><icorrectResponses><response>4</response><response>5</response><response>6</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>Which month of the year has the least number of days?</p></itemBody><correctResponse><response>February</response></correctResponse><icorrectResponses><response>January</response><response>March</response><response>Octobar</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>How many days are there in the month of February in a leap year?</p></itemBody><correctResponse><response>29</response></correctResponse><icorrectResponses><response>28</response><response>26</response><response>27</response></icorrectResponses></assessmentItem><assessmentItem subject="general" author="vadillo@ehu.es"><itemBody><p>Which animal is called King of Jungle?</p></itemBody><correctResponse><response>Lion</response></correctResponse><icorrectResponses><response>elefant</response><response>Tiger</response><response>Beer</response></icorrectResponses></assessmentItem></assessmentItems>

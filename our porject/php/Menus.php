@@ -30,8 +30,20 @@ if (isset($_GET['cont'])==1) {
 //  echo "<span><a href='ShowXMLQuestions.php?email=$email&cont=1'> Ver Preguntas XML</a></span>";
   echo "<span><a href='Credits.php?email=$email&cont=1'>Creditos</a></span>";
   echo "<span><a href='HandlingQuizesAjax.php?email=$email&cont=1'> Ver Preguntas AJax</a></span>";
+//  echo "<span><a href='searchQuestions.php?email=$email&cont=1'>Buscar Preguntas</a></span> ";
 
-  
+
+  // if (strcmp ($email,"vadillo@ehu.es")==0 ) {
+  //   echo "<span><a href='searchQuestions.php'>Buscar Preguntas</a></span> ";
+  //
+  // }
+
+  if (preg_match("/((^[a-zA-Z]+)\.?([a-zA-Z]*)@ehu\.(eus|es))$/", $email) == 1)
+
+  {
+    echo "<span><a href='searchQuestions.php?email=$email&cont=1'>Buscar Preguntas</a></span> ";
+
+  }
 
 
 

@@ -1,3 +1,4 @@
+//var test1=false;
 $(document).ready(function (event) {
 
 
@@ -26,10 +27,10 @@ $(document).ready(function (event) {
 
 
 
-                                    if (contrasena.trim().length >= 6 && contrasena.trim() == contrasena_rep.trim()) {
+                                    if (contrasena.trim().length >= 6  && contrasena.trim() == contrasena_rep.trim()) {
 
+                                      if(test1==true){$("#Boton").attr("disabled", false);}
 
-                                        $("#Boton").attr("disabled", false);
                                     }
                                     else {
                                         $("#Boton").attr("disabled", true);

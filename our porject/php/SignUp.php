@@ -3,6 +3,9 @@
 
 <head>
   <script src="../js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript">
+  var test1=false;
+  </script>
   <script type="text/javascript" src="../js/ShowImageInForm.js"></script>
   <script type="text/javascript" src="../js/VerifyPassEmail.js"></script>
   <script type="text/javascript" src="../js/checkvip.js"></script>

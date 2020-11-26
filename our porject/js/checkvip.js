@@ -1,3 +1,4 @@
+//var test1=false;
 $(document).ready(function (event) {
 
     $("form input").change(function comprobar() {
@@ -10,7 +11,8 @@ $(document).ready(function (event) {
                         //  alert(result);
                 if (result == "SI") {
                     $("#mail").html("Email VIP");
-                      $("#Boton").attr("disabled", false);
+                    //  $("#Boton").attr("disabled", false);
+                      test1=true;
 
                 } else {
                     $("#mail").html("Email no VIP");

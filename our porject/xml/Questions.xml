@@ -32,4 +32,4 @@
 			<response> Ninguna es correcta </response>
 		</IncorrectResponses>
 	</assessmentItem>
-</assessmentItems>
+<assessmentItem subject="s" author="vadillo@ehu.es"><itemBody><p>aaaaaaaaaaaa</p></itemBody><correctResponse><response>s</response></correctResponse><icorrectResponses><response>s</response><response>s</response><response>s</response></icorrectResponses></assessmentItem><assessmentItem subject="a" author="vadilloo@ehu.es"><itemBody><p>aaaaaaaaaaaaaaaaaa</p></itemBody><correctResponse><response>a</response></correctResponse><icorrectResponses><response>a</response><response>aa</response><response>a</response></icorrectResponses></assessmentItem></assessmentItems>

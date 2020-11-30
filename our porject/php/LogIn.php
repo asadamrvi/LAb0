@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,31 +61,48 @@
     $pass=md5($_POST['pass']);
     $usuarios = mysqli_query( $mysql,"SELECT * FROM `usuario` WHERE `email`= '$username'  and password ='$pass'");
 
-    $cont= mysqli_num_rows($usuarios);
-
     mysqli_close( $mysql); //cierra la conexion
 
-    if($cont==1){
+    $datos = mysqli_fetch_array($usuarios);
 
-      echo "$username";
+        if ($datos[1] == $username && $datos[3] == $pass) {
 
-      echo("<script>window.location = 'IncreaseGlobalCounter.php?email=$username&cont=1';</script>");
+          
+          if($datos[0]=='admin@ehu.es'){
+            $_SESSION['username']=$username;
+               echo("<script> alert('Bienvenido al sistema ADMIN');
+                window.location.href='Layout.php';
+                </script>");
+            }
 
-     //echo("<script> alert ('Bienvenido al sistema:". $username ."')
-     //window.location.href='Layout.php?email=$username&cont=1';</script>");
+          else {
+
+            if($datos[4]=='ACTIVO'){
+              $_SESSION['username']=$username;
+               echo "<script> alert ('Bienvenido al sistema:". $username ."');
+                window.location.href='Layout.php';</script>";
+                
+         
+              }
+            else{
+              echo "<script>
+               alert('". $username ." tu cuenta está bloqueda, contacta con administrador');
+               window.location.href='Layout.php';
+               </script>";  
+          }
+
+          }
+        }
+          
+        else 
 
 
-
-
-      }
-    else {
-
-      echo("<script>alert('Parametros incorrectos')</script>");
-
-
-
-      }
+        {
+          echo("<script>alert('Parametros de login incorrectos')</script>");
+        }
+      
 
     }
+
 
   ?>

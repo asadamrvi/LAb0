@@ -1,4 +1,25 @@
 <?php
+
+session_start();
+if (isset($_SESSION['username'])) {
+  if ($_SESSION['username'] == "") {
+    echo '<script type="text/javascript">
+			alert("Create or Login to Your Account");
+        window.location.href="Layout.php";
+        </script>';
+  }
+    if ($_SESSION['username'] == "admin@ehu.es") {
+    echo '<script type="text/javascript">
+        alert("ONly for Students");
+        window.location.href="Layout.php";
+        </script>';
+  }
+} else {
+  echo '<script type="text/javascript">
+      alert("Registrate o entra con tu cuenta");
+      window.location.href="Layout.php";
+      </script>';
+}
 require_once('../lib/nusoap.php');
 
 

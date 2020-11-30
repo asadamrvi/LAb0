@@ -4,58 +4,54 @@
 
 
   <?php
-  if (isset($_GET['cont'])==1) {
-    $email=$_GET['email'];
-    echo "<span class='right'><a href='LogOut.php?email=$email'>LogOut</a></span>";
+  if (isset($_SESSION['username'])==1) {
+
+    $email=$_SESSION['username'];
+    echo "<span class='right'><a href='LogOut.php'>LogOut</a></span>";
     echo " $email";
 
   }
   else {
     echo "<span class='right'><a href='SignUp.php'>Registro</a></span>";
     echo "  <span class='right'><a href='LogIn.php'>Login</a></span>";
-  } ?>
+  } 
+
+  ?>
 
 
 </header>
+
 <nav class='main' id='n1' role='navigation'>
+
   <?php
 
-if (isset($_GET['cont'])==1) {
-  $email=$_GET['email'];
+if (isset($_SESSION['username'])==1) {
 
-  echo "<span><a href='Layout.php?email=$email&cont=1'>Inicio</a></span>";
+  $email=$_SESSION['username'];
 
-  //echo "<span><a href='QuestionForm.php?email=$email&cont=1'> Insertar Pregunta</a></span>";
-//  echo "<span><a href='ShowQuestions.php?email=$email&cont=1'> Ver Preguntas</a></span>";
-//  echo "<span><a href='ShowXMLQuestions.php?email=$email&cont=1'> Ver Preguntas XML</a></span>";
-  echo "<span><a href='Credits.php?email=$email&cont=1'>Creditos</a></span>";
-  echo "<span><a href='HandlingQuizesAjax.php?email=$email&cont=1'> Ver Preguntas AJax</a></span>";
-//  echo "<span><a href='searchQuestions.php?email=$email&cont=1'>Buscar Preguntas</a></span> ";
+  if ($_SESSION['username']=="admin@ehu.es") {
 
-
-  // if (strcmp ($email,"vadillo@ehu.es")==0 ) {
-  //   echo "<span><a href='searchQuestions.php'>Buscar Preguntas</a></span> ";
-  //
-  // }
-
-  if (preg_match("/((^[a-zA-Z]+)\.?([a-zA-Z]*)@ehu\.(eus|es))$/", $email) == 1)
-
-  {
-    echo "<span><a href='searchQuestions.php?email=$email&cont=1'>Buscar Preguntas</a></span> ";
-
+    echo "<span><a href='Layout.php'>Inicio</a></span>";
+    echo "<span><a href='Credits.php'>Creditos</a></span>";
+    echo "<span><a href='HandlingAccounts.php'>Gestionar Usuarios</a></span>";
   }
 
-
-
-
+  else
+  {
+    echo "<span><a href='Layout.php'>Inicio</a></span>";
+    echo "<span><a href='Credits.php'>Creditos</a></span>";
+    echo "<span><a href='HandlingQuizesAjax.php'> Insertar Preguntas AJax</a></span>";
+  }
 
 }
+
 else {
-  echo "<span><a href='Layout.php'>Inicio</a></span>";
-  echo "<span><a href='Credits.php'>Creditos</a></span>";
+
+    echo "<span><a href='Layout.php'>Inicio</a></span>";
+    echo "<span><a href='Credits.php'>Creditos</a></span>";
 }
-   ?>
 
+ ?>
 
+ </nav>
 
-</nav>

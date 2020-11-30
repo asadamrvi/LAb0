@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-$email = $_GET["email"];
+$email = $_SESSION["username"];
 
 
 $xml = simplexml_load_file("../xml/Counter.xml");
@@ -13,13 +14,13 @@ foreach ($xml->user as $user){
 if($encontrado==false){
 print_r((integer)$xml[0]["contador"]=(integer)$xml[0]["contador"]+1) ;
 $child = $xml->addChild("user");
-$child-> addChild('p',$_GET["email"]);
+$child-> addChild('p',$_SESSION["username"]);
 
 }
 
 
 $xml->asXML('../xml/Counter.xml');
-$username=$_GET["email"];
+$username=$_SESSION["username"];
 echo("<script>window.location.href='Layout.php?email=$username&cont=1';</script>");
 //header('Location:Layout.php?email=".$username."&cont=1');
 exit;

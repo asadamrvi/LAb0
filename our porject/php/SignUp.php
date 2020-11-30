@@ -107,6 +107,7 @@
     $password = $_POST['password'];
     $passwordr = $_POST['passwordr'];
     $tipo = $_POST['tipo'];
+    //$estado = "ACTIVO";
 
     if (ValidateRegisterPHP($email, $password, $passwordr, $nombre, $tipo)) {
       // echo "$email";

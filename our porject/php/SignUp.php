@@ -119,8 +119,8 @@
       $password = md5($password);
      // alert($password);
      // echo " '$password'";
-        $sql = "INSERT INTO usuario (tipousuario, email , nombre, password)
-        VALUES( '$tipo','$email', '$nombre','$password')";
+        $sql = "INSERT INTO usuario (tipousuario, email , nombre, password,estado)
+        VALUES( '$tipo','$email', '$nombre','$password','ACTIVO')";
 
         if ($conexion->query($sql) === TRUE) {
           alertredirect("Registro completado exitosamente.");

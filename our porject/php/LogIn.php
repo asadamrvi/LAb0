@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -67,7 +67,7 @@ session_start();
 
         if ($datos[1] == $username && $datos[3] == $pass) {
 
-          
+
           if($datos[0]=='admin@ehu.es'){
             $_SESSION['username']=$username;
                echo("<script> alert('Bienvenido al sistema ADMIN');
@@ -79,28 +79,29 @@ session_start();
 
             if($datos[4]=='ACTIVO'){
               $_SESSION['username']=$username;
+              
                echo "<script> alert ('Bienvenido al sistema:". $username ."');
-                window.location.href='Layout.php';</script>";
-                
-         
+                window.location = 'IncreaseGlobalCounter.php';</script>";
+
+
               }
             else{
               echo "<script>
                alert('". $username ." tu cuenta está bloqueda, contacta con administrador');
                window.location.href='Layout.php';
-               </script>";  
+               </script>";
           }
 
           }
         }
-          
-        else 
+
+        else
 
 
         {
           echo("<script>alert('Parametros de login incorrectos')</script>");
         }
-      
+
 
     }
 

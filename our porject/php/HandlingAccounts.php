@@ -6,6 +6,12 @@ if (isset($_SESSION['username'])) {
         window.location.href="Layout.php";
         </script>';
   }
+  if ($_SESSION['username'] != "admin@ehu.es") {
+    echo '<script type="text/javascript">
+        alert("You are Not Admin Bro");
+        window.location.href="Layout.php";
+        </script>';
+  }
 } else {
   echo '<script type="text/javascript">
 	alert("Create or Login to Your Account");

@@ -41,6 +41,13 @@ if (isset($_SESSION['username'])==1) {
     echo "<span><a href='Layout.php'>Inicio</a></span>";
     echo "<span><a href='Credits.php'>Creditos</a></span>";
     echo "<span><a href='HandlingQuizesAjax.php'> Insertar Preguntas AJax</a></span>";
+    if (preg_match("/((^[a-zA-Z]+)\.?([a-zA-Z]*)@ehu\.(eus|es))$/", $email) == 1)
+
+  {
+    echo "<span><a href='searchQuestions.php?email=$email&cont=1'>Buscar Preguntas</a></span> ";
+
+  }
+
   }
 
 }
